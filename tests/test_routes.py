@@ -184,7 +184,7 @@ class TestProductRoutes(TestCase):
         data = response.get_json()
         self.assertIn("was not found", data["message"])
 
-        def test_update_product(self):
+    def test_update_product(self):
         """It should Update an existing Product"""
         # create a product to update
         test_product = ProductFactory()
@@ -198,7 +198,7 @@ class TestProductRoutes(TestCase):
         updated_product = response.get_json()
         self.assertEqual(updated_product["description"], "unknown")
 
-        def test_delete_product(self):
+    def test_delete_product(self):
         """It should Delete a Product"""
         products = self._create_products(5)
         product_count = self.get_product_count()
@@ -212,7 +212,7 @@ class TestProductRoutes(TestCase):
         new_count = self.get_product_count()
         self.assertEqual(new_count, product_count - 1)
 
-        def test_get_product_list(self):
+    def test_get_product_list(self):
         """It should Get a list of Products"""
         self._create_products(5)
         response = self.client.get(BASE_URL)
